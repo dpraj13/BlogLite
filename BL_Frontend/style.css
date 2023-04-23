@@ -1,0 +1,75 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+#li {
+    text-decoration: none;
+    color: blue;
+
+}
+h1,h2,h3,h4,h5{
+    font-family:serif ;
+}
+
+
+#my-pic {
+    max-width: 10vw;
+    max-height: 10vw;
+    text-align: center;
+    border-radius: 50%;
+    margin-left: 2.5vw;
+  }
+#my-image {
+    max-width: 15vw;
+    max-height: 15vw;
+    text-align: center;
+    border-radius: 20%;
+    
+  }
+/* #profile_info{
+    background-color: rgb(175, 175, 225);
+    padding: 2%;
+    border-radius: 1%;
+} */
+hr{
+    
+    color:black;
+    margin-top: 5px;
+}
+.card{
+      background-color:plum;
+      margin: 2vw;
+      /* padding: -5vw; */
+      box-shadow: 10px 10px 5px rgb(60, 46, 73);
+      /* align-self: center;
+      vertical-align: middle; */
+}
+
+
+#blog_img{
+    max-width: 25vw;
+    max-height: 25vw;
+    object-fit: cover;
+    text-shadow: 2px 2px;
+    top:2%;
+   bottom:2%;
+   left:2%;
+   right:2%;
+   -webkit-border-radius:15%;		
+   -moz-border-radius:15%;
+   border-radius:5%;
+   -webkit-box-shadow:0px -1px 25px rgba(0,0,0,0.5), 0px 1px 25px rgba(0,0,0,0.7);
+   -moz-box-shadow:0px -1px 25px rgba(0,0,0,0.5), 0px 1px 25px rgba(0,0,0,0.7);
+   box-shadow:0px -1px 25px rgba(0,0,0,0.5), 0px 1px 25px rgba(0,0,0,0.7);
+}
+hr {
+    border-top: 3px solid rgb(60, 55, 55);
+  }
+/* #login_page{
+    background-image:url("pexels-alexander-kovalev-2847648.jpg");
+} */
+
+#card_body{
+    background-color:rgb(255, 192, 58); 
+    text-align:center;
+}

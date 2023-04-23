@@ -1,0 +1,5 @@
+redis-server
+celery -A main.celery worker -l info
+celery -A main.celery beat --max-interval 1 -l info
+~/go/bin/MailHog
+python3 main.py

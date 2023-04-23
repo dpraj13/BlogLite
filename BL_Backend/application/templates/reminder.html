@@ -1,0 +1,71 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloglite</title>
+    <style>
+        body {
+            background-color: #141414;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        h1, h2, h4 {
+            font-weight: bold;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-top: 3rem;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        li {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% if list %}
+        <h1>Great news, {{user}}!</h1>
+        <h4>The Bloglite community has been graced with your new posts today.</h4>
+        <h4>We can't wait for you to see their titles. Take a look!</h4>
+        <ul>
+        {% for post in list %}
+            <li>{{post.title}}</li>
+        {% endfor %}
+        </ul>
+        <h4>For details please visit our app.</h4>
+    {% else %}
+        <h2>Hey {{user}}, it seems like things have been quiet on your end today.</h2>
+        <h4>Is everything okay?</h4>
+        <h4>We just wanted to check in and remind you that you haven't posted anything yet.</h4>
+        <h4>How about boosting your community engagement?</h4>
+        <h4>Adding some new posts would be a great way to do that. Let's get started!</h4>
+   {% endif %}
+</body>
+</html>

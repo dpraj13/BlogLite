@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        h2 {
+        text-align: center;
+        color: black;
+        }
+        h4 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+      
+            
+
+            footer {page-break-after: always;}
+    </style>
+</head>
+
+<body>
+    <h2>Monthly Report</h2>
+    {% if posts %}
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>Post Title</th>
+                <th>Post Description</th>
+                <th>Post Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                {% for post in posts %}
+                <tr>
+                    <td style="color: #e50914;">{{post.title}}</td>
+                    <td style="color: #e50914;">{{post.description}}</td>
+                    <td style="color: #e50914;">{{post.date[:10]}}</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="photo">
+        <h4> Trendline for creation of posts</h4>
+        {% endif %}
+        <img src="application/static/trendline/{{id}}.png" alt="No post created this month ">
+
+    </div>
+</body>
+</html>

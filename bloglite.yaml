@@ -1,0 +1,925 @@
+---
+info:
+  _postman_id: 59029529-7c51-4a74-80b8-deb4e77a4ea8
+  name: Bloglite App - OpenAPI 3.0
+  description: "Bloglite is a blog app that uses a simple markdown\n\n<h2>Error Codes.<h2>\n<h3>User
+    operations.<h3> <table>\n<thead>\n  \n  <th>Error Code</th>\n  <th>Message</th>\n
+    \ <tbody>\n   <tr>\n    <td>BE1001</td>\n    <td>Username is required</td>\n   </tr>\n
+    \  <tr>\n    <td>BE1002</td>\n    <td>Password is required</td>\n   </tr>\n   <tr>\n
+    \   <td>BE1003</td>\n    <td>Name is required</td>\n   </tr>\n   <tr>\n    <td>BE1004</td>\n
+    \   <td>User Not Found</td>\n   </tr>\n   <tr>\n    <td>SE1001</td>\n    <td>Invalid
+    password. Password should contain atleast 8 characters</td>\n   </tr>\n   <tr>\n
+    \   <td>SE1002</td>\n    <td>Username already exist</td>\n   </tr>\n   <tr>\n
+    \   <td>SE1003</td>\n    <td>Incorrect password</td>\n   </tr>\n   <tr>\n    <td>SE1004</td>\n
+    \   <td>Email already exist</td>\n   </tr>\n  </tbody>\n </table>\n \n \n <h3>List
+    operations.<h3> \n <table>\n  <thead>\n    <th>Error Code</th>\n    <th>Message</th>\n
+    \   <tbody>\n     <tr>\n      <td>BE2001</td>\n      <td>User does not have any
+    list.</td>\n     </tr>\n     <tr>\n      <td>BE2002</td>\n      <td>No More than
+    5 lists can be created for each user</td>\n     </tr>\n     <tr>\n      <td>SE2001</td>\n
+    \     <td>List does not exist.</td>\n     </tr>\n     <tr>\n      <td>SE2002</td>\n
+    \     <td>List with similar name exist.</td>\n     </tr>\n    </tbody>\n </table>\n
+    \n \n <h3>Card operations. </h3>\n <table>\n  <thead>\n    <th>Error Code</th>\n
+    \   <th>Message</th>\n    <tbody>\n     <tr>\n      <td>BE3001</td>\n      <td>User
+    does not have any Card.\n     </tr>\n     <tr>\n      <td>BE3002</td>\n      <td>List
+    does not have any Card.</td>\n     </tr>\n      <tr>\n      <td>BE3003</td>\n
+    \     <td>List does not belong to user.</td>\n     </tr>\n     <tr>\n      <td>BE3004</td>\n
+    \     <td>Deadline before Start date.</td>\n     </tr>\n     <tr>\n      <td>BE3005</td>\n
+    \     <td>Complete date before Start date.</td>\n     </tr>\n     <tr>\n      <td>BE3006</td>\n
+    \     <td>NO CARD IS YET COMPLETED</td>\n     </tr>\n     <tr>\n      <td>BE3007</td>\n
+    \     <td>Atleast two cards need to be completed</td>\n     </tr>\n     <tr>\n
+    \     <td>SE3001</td>\n      <td>Card does not exist.</td>\n     </tr>\n     <tr>\n
+    \     <td>SE3002</td>\n      <td>Incorrect date format.</td>\n     </tr>\n    </tbody>\n
+    \  </table>"
+  schema: https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+  _exporter_id: '24982217'
+item:
+- name: api
+  item:
+  - name: user
+    item:
+    - name: User Details.
+      protocolProfileBehavior:
+        disableBodyPruning: true
+      request:
+        method: GET
+        header:
+        - key: authentication_token
+          value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZAJUeQ.3gfVbw3Wd5RBSLCv2EbLIZ2lRrI
+          type: text
+        body:
+          mode: raw
+          raw: ''
+          options:
+            raw:
+              language: json
+        url:
+          raw: http://127.0.0.1:5000/api/user
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - user
+        description: Login
+      response:
+      - name: Successfully logged In
+        originalRequest:
+          method: GET
+          header: []
+          url:
+            raw: http://127.0.0.1:5000/api/user/login
+            protocol: http
+            host:
+            - '127'
+            - '0'
+            - '0'
+            - '1'
+            port: '5000'
+            path:
+            - api
+            - user
+            - login
+        status: OK
+        code: 200
+        _postman_previewlanguage: json
+        header:
+        - key: Content-Type
+          value: application/json
+        cookie: []
+        body: |-
+          {
+            "user_id": 10,
+            "name": "Dhairyasheel Patil"
+          }
+      - name: Bad Request
+        originalRequest:
+          method: GET
+          header: []
+          url:
+            raw: "{{baseUrl}}/api/user/login"
+            host:
+            - "{{baseUrl}}"
+            path:
+            - api
+            - user
+            - login
+        status: Bad Request
+        code: 400
+        _postman_previewlanguage: json
+        header:
+        - key: Content-Type
+          value: application/json
+        cookie: []
+        body: |-
+          {
+            "error_code": "incididunt elit",
+            "error_message": "ad nisi aliquip magna laborum"
+          }
+      - name: User does not exists
+        originalRequest:
+          method: GET
+          header: []
+          url:
+            raw: "{{baseUrl}}/api/user/login"
+            host:
+            - "{{baseUrl}}"
+            path:
+            - api
+            - user
+            - login
+        status: Not Found
+        code: 404
+        _postman_previewlanguage: json
+        header:
+        - key: Content-Type
+          value: application/json
+        cookie: []
+        body: |-
+          {
+            "error_code": "incididunt elit",
+            "error_message": "ad nisi aliquip magna laborum"
+          }
+      - name: Internal Server Error
+        originalRequest:
+          method: GET
+          header: []
+          url:
+            raw: "{{baseUrl}}/api/user/login"
+            host:
+            - "{{baseUrl}}"
+            path:
+            - api
+            - user
+            - login
+        status: Internal Server Error
+        code: 500
+        _postman_previewlanguage: text
+        header:
+        - key: Content-Type
+          value: text/plain
+        cookie: []
+        body: ''
+    - name: Add a new user
+      request:
+        method: POST
+        header:
+        - key: Content-Type
+          value: application/json
+        - key: Accept
+          value: application/json
+        body:
+          mode: raw
+          raw: |-
+            {
+                "name":"DP",
+                "username":"dp1",
+                "email":"dp1@gmail.com",
+                "password":"dpraj@13"
+            }
+          options:
+            raw:
+              language: json
+        url:
+          raw: "{{baseUrl}}/api/user/register"
+          host:
+          - "{{baseUrl}}"
+          path:
+          - api
+          - user
+          - register
+        description: Add a new user
+      response:
+      - name: Successful Created
+        originalRequest:
+          method: POST
+          header: []
+          body:
+            mode: raw
+            raw: |-
+              {
+                "name": "Dhairyasheel Patil",
+                "username": "dpraj13",
+                "password": "dpraj@13",
+                "email": "dpraj13@gmail.com"
+              }
+            options:
+              raw:
+                language: json
+          url:
+            raw: http://127.0.0.1:5000/api/user/register
+            protocol: http
+            host:
+            - '127'
+            - '0'
+            - '0'
+            - '1'
+            port: '5000'
+            path:
+            - api
+            - user
+            - register
+        status: OK
+        code: 200
+        _postman_previewlanguage: json
+        header:
+        - key: Content-Type
+          value: application/json
+        cookie: []
+        body: |-
+          {
+            "id": 10,
+            "name": "Dhairyasheel Patil",
+            "username": "dpraj13",
+            "email": "dpraj13@gmail.com"
+          }
+      - name: BAD REQUEST
+        originalRequest:
+          method: POST
+          header: []
+          body:
+            mode: raw
+            raw: |-
+              {
+                "name": "Dhairyasheel Patil",
+                "username": "dpraj13",
+                "password": "dpraj@13",
+                "email": "dpraj13@gmail.com"
+              }
+            options:
+              raw:
+                language: json
+          url:
+            raw: "{{baseUrl}}/api/user/register"
+            host:
+            - "{{baseUrl}}"
+            path:
+            - api
+            - user
+            - register
+        status: Bad Request
+        code: 400
+        _postman_previewlanguage: json
+        header:
+        - key: Content-Type
+          value: application/json
+        cookie: []
+        body: |-
+          {
+            "error_code": "incididunt elit",
+            "error_message": "ad nisi aliquip magna laborum"
+          }
+      - name: username already exists
+        originalRequest:
+          method: POST
+          header: []
+          body:
+            mode: raw
+            raw: |-
+              {
+                "name": "Dhairyasheel Patil",
+                "username": "dpraj13",
+                "password": "dpraj@13",
+                "email": "dpraj13@gmail.com"
+              }
+            options:
+              raw:
+                language: json
+          url:
+            raw: "{{baseUrl}}/api/user/register"
+            host:
+            - "{{baseUrl}}"
+            path:
+            - api
+            - user
+            - register
+        status: Conflict
+        code: 409
+        _postman_previewlanguage: json
+        header:
+        - key: Content-Type
+          value: application/json
+        cookie: []
+        body: |-
+          {
+            "error_code": "incididunt elit",
+            "error_message": "ad nisi aliquip magna laborum"
+          }
+      - name: Internal Server Error
+        originalRequest:
+          method: POST
+          header: []
+          body:
+            mode: raw
+            raw: |-
+              {
+                "name": "Dhairyasheel Patil",
+                "username": "dpraj13",
+                "password": "dpraj@13",
+                "email": "dpraj13@gmail.com"
+              }
+            options:
+              raw:
+                language: json
+          url:
+            raw: "{{baseUrl}}/api/user/register"
+            host:
+            - "{{baseUrl}}"
+            path:
+            - api
+            - user
+            - register
+        status: Internal Server Error
+        code: 500
+        _postman_previewlanguage: text
+        header:
+        - key: Content-Type
+          value: text/plain
+        cookie: []
+        body: ''
+    - name: Public_user_details
+      request:
+        method: GET
+        header: []
+        url:
+          raw: http://127.0.0.1:5000/api/user/public/:username
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - user
+          - public
+          - ":username"
+          variable:
+          - key: username
+            value:
+      response: []
+    - name: Public_User_profile_image
+      request:
+        method: GET
+        header: []
+        url:
+          raw: http://127.0.0.1:5000/api/user/image/:username
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - user
+          - image
+          - ":username"
+          variable:
+          - key: username
+            value:
+      response: []
+  - name: User_Image
+    item:
+    - name: Get profile image
+      request:
+        method: GET
+        header:
+        - key: authentication_token
+          value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZARKeg.awOhLfHtyYQ1FBfpGsOUuOJeAt8
+          type: text
+        url:
+          raw: "{{baseUrl}}/api/user/image/:username"
+          host:
+          - "{{baseUrl}}"
+          path:
+          - api
+          - user
+          - image
+          - ":username"
+          variable:
+          - key: username
+            value:
+      response: []
+    - name: save profile image
+      request:
+        method: POST
+        header: []
+        url:
+          raw: "{{baseUrl}}/api/user/image"
+          host:
+          - "{{baseUrl}}"
+          path:
+          - api
+          - user
+          - image
+      response: []
+    - name: Change Profile Image
+      request:
+        method: PUT
+        header:
+        - key: authentication_token
+          value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZAJUeQ.3gfVbw3Wd5RBSLCv2EbLIZ2lRrI
+          type: text
+        body:
+          mode: formdata
+          formdata: []
+        url:
+          raw: http://127.0.0.1:5000/api/user/image
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - user
+          - image
+      response: []
+  - name: Blog
+    item:
+    - name: Create a post/Blog
+      request:
+        method: POST
+        header:
+        - key: authentication_token
+          value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZAJUeQ.3gfVbw3Wd5RBSLCv2EbLIZ2lRrI
+          type: text
+        body:
+          mode: formdata
+          formdata:
+          - key: file
+            type: file
+            src: "/C:/Users/patil/Pictures/main-qimg-cdd5d26028a7c0a9a926547c5c5fda49.jpg"
+        url:
+          raw: http://127.0.0.1:5000/api/add_post?title=uniquesadada&description=dfsfsfsafd&private=0
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - add_post
+          query:
+          - key: title
+            value: uniquesadada
+          - key: description
+            value: dfsfsfsafd
+          - key: private
+            value: '0'
+      response: []
+    - name: Get  a post/blog Details
+      protocolProfileBehavior:
+        disableBodyPruning: true
+      request:
+        method: GET
+        header:
+        - key: authentication_token
+          value: WyJhZTg3MjA2ZDYzMWI0YWQ3OTg2YTVlZDMzMDU4MGQ3ZiJd.ZATsSA.gDzgxlqydlQe15STjuxPeREUfp8
+          type: text
+        body:
+          mode: urlencoded
+          urlencoded: []
+        url:
+          raw: http://127.0.0.1:5000/api/post/:post_id
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - post
+          - ":post_id"
+          variable:
+          - key: post_id
+            value: '1'
+      response: []
+    - name: Update blog/post by post_id
+      request:
+        method: PUT
+        header:
+        - key: authentication_token
+          value: WyIxOGUxZTUyZjk3MWY0NWMxODI2MTIwMjM5OTgwM2RlZiJd.ZABTPw.RbBaHvRYpriwMyLbcGxSA2aMeQ0
+          type: text
+        body:
+          mode: raw
+          raw: "{\r\n  \"title\": \"afdcdfvxsvs\",\r\n  \"description\": \"tasks that
+            are yet to be completed\",\r\n  \"private\": 1\r\n  \r\n}"
+          options:
+            raw:
+              language: json
+        url:
+          raw: http://127.0.0.1:5000/api/post/:post_id
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - post
+          - ":post_id"
+          variable:
+          - key: post_id
+            value: '2'
+      response: []
+    - name: Delete Post/Blog by post_id
+      request:
+        method: DELETE
+        header:
+        - key: authentication_token
+          value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZAJUeQ.3gfVbw3Wd5RBSLCv2EbLIZ2lRrI
+          type: text
+        url:
+          raw: http://127.0.0.1:5000/api/post/:post_id
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - post
+          - ":post_id"
+          variable:
+          - key: post_id
+            value: '1'
+      response: []
+    - name: GET  free post No auth
+      request:
+        method: GET
+        header: []
+        url:
+          raw: http://127.0.0.1:5000/api/free_post/:post_id
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - free_post
+          - ":post_id"
+          variable:
+          - key: post_id
+            value: '20'
+      response: []
+  - name: blog_image
+    item:
+    - name: Get blog image of the post
+      request:
+        method: GET
+        header:
+        - key: authentication_token
+          value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZAJUeQ.3gfVbw3Wd5RBSLCv2EbLIZ2lRrI
+          type: text
+        url:
+          raw: http://127.0.0.1:5000/api/image?post_id=5
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - image
+          query:
+          - key: post_id
+            value: '5'
+      response: []
+    - name: Change Image of Blog/Post
+      request:
+        method: PUT
+        header:
+        - key: authentication_token
+          value: WyI4ZWM0MDdkMTgyMWE0OGUwOGRkYWMzOGU4MTQ0NWIwOCJd.Y92IZA.8U2iA19DcuqIQE-TC52-ReZtSvM
+          type: text
+        body:
+          mode: formdata
+          formdata:
+          - key: file
+            type: file
+            src: "/C:/Users/patil/Pictures/profile photo.png"
+        url:
+          raw: http://127.0.0.1:5000/api/image?post_id=1
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - image
+          query:
+          - key: post_id
+            value: '1'
+      response: []
+  - name: Follow
+    item:
+    - name: 'Follow other user '
+      request:
+        method: POST
+        header:
+        - key: authentication_token
+          value: WyJmOGUyOGZkNzFjNzU0ODFmOWEyNjQ1NWYwN2JiNTg0MyJd.ZANTTQ.NPdRzfQw_nC-HbMVCbUfudRoIJo
+          type: text
+        url:
+          raw: http://127.0.0.1:5000/api/follow/:user2_id
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - follow
+          - ":user2_id"
+          variable:
+          - key: user2_id
+            value: '1'
+      response: []
+    - name: Unfollow the user
+      request:
+        method: DELETE
+        header:
+        - key: authentication_token
+          value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZAJUeQ.3gfVbw3Wd5RBSLCv2EbLIZ2lRrI
+          type: text
+        url:
+          raw: http://127.0.0.1:5000/api/follow/:user2_id
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - follow
+          - ":user2_id"
+          variable:
+          - key: user2_id
+            value: '5'
+      response: []
+    - name: No of Followed_by
+      request:
+        method: GET
+        header:
+        - key: authentication_token
+          value: WyJhZTg3MjA2ZDYzMWI0YWQ3OTg2YTVlZDMzMDU4MGQ3ZiJd.ZAb2LQ.bktcBRY4_6i_khDdt1dBqFzk3_Y
+          type: text
+        url:
+          raw: http://127.0.0.1:5000/api/follow
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - follow
+      response: []
+    - name: No of user Followed
+      request:
+        method: GET
+        header:
+        - key: authentication_token
+          value: WyJhZTg3MjA2ZDYzMWI0YWQ3OTg2YTVlZDMzMDU4MGQ3ZiJd.ZAYQKw.VyX_MrOhx16bSxIBLY0hZKeR3Pg
+          type: text
+        url:
+          raw: http://127.0.0.1:5000/api/following
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - following
+      response: []
+    - name: Check follow
+      request:
+        method: GET
+        header: []
+        url:
+          raw: http://127.0.0.1:5000/api/check_follow/:user2_id
+          protocol: http
+          host:
+          - '127'
+          - '0'
+          - '0'
+          - '1'
+          port: '5000'
+          path:
+          - api
+          - check_follow
+          - ":user2_id"
+          variable:
+          - key: user2_id
+            value:
+      response: []
+  - name: All Post/Blog for a user
+    request:
+      method: GET
+      header:
+      - key: authentication_token
+        value: WyI5ZjRhZjhmODQyYWY0NjhhOGJkOWU3MDE1MWJlMzFlZCJd.ZAJUeQ.3gfVbw3Wd5RBSLCv2EbLIZ2lRrI
+        type: text
+      url:
+        raw: http://127.0.0.1:5000/api/all_posts
+        protocol: http
+        host:
+        - '127'
+        - '0'
+        - '0'
+        - '1'
+        port: '5000'
+        path:
+        - api
+        - all_posts
+    response: []
+  - name: Search
+    request:
+      method: GET
+      header:
+      - key: authentication_token
+        value: WyI4ZWM0MDdkMTgyMWE0OGUwOGRkYWMzOGU4MTQ0NWIwOCJd.Y95jhQ.GoSX0uuC_PK0d8POTm5Zn96Gn5c
+        type: text
+      url:
+        raw: http://127.0.0.1:5000/api/search/:like
+        protocol: http
+        host:
+        - '127'
+        - '0'
+        - '0'
+        - '1'
+        port: '5000'
+        path:
+        - api
+        - search
+        - ":like"
+        variable:
+        - key: like
+          value: dp
+    response: []
+  - name: FEED of USER
+    request:
+      method: GET
+      header:
+      - key: authentication_token
+        value: WyI4ZWM0MDdkMTgyMWE0OGUwOGRkYWMzOGU4MTQ0NWIwOCJd.Y95jhQ.GoSX0uuC_PK0d8POTm5Zn96Gn5c
+        type: text
+      url:
+        raw: http://127.0.0.1:5000/api/feed
+        protocol: http
+        host:
+        - '127'
+        - '0'
+        - '0'
+        - '1'
+        port: '5000'
+        path:
+        - api
+        - feed
+    response: []
+  - name: Export Blog/Post in PDF
+    request:
+      method: GET
+      header:
+      - key: authentication_token
+        value: WyI4ZWM0MDdkMTgyMWE0OGUwOGRkYWMzOGU4MTQ0NWIwOCJd.Y95jhQ.GoSX0uuC_PK0d8POTm5Zn96Gn5c
+        type: text
+      url:
+        raw: http://127.0.0.1:5000/api/export/:post_id
+        protocol: http
+        host:
+        - '127'
+        - '0'
+        - '0'
+        - '1'
+        port: '5000'
+        path:
+        - api
+        - export
+        - ":post_id"
+        variable:
+        - key: post_id
+          value: '6'
+    response: []
+  - name: Login
+    request:
+      method: POST
+      header: []
+      body:
+        mode: raw
+        raw: "{\r\n\t\"email\": \"dp1@gmail.com\",\r\n\t\"password\": \"dpraj@13\"\r\n}"
+        options:
+          raw:
+            language: json
+      url:
+        raw: "{{baseUrl}}/login?include_auth_token"
+        host:
+        - "{{baseUrl}}"
+        path:
+        - login
+        query:
+        - key: include_auth_token
+          value:
+    response: []
+  - name: Export AllPosts for user
+    request:
+      method: GET
+      header: []
+      url:
+        raw: http://127.0.0.1:5000/api/export
+        protocol: http
+        host:
+        - '127'
+        - '0'
+        - '0'
+        - '1'
+        port: '5000'
+        path:
+        - api
+        - export
+    response: []
+  - name: All Public posts of user
+    request:
+      method: GET
+      header: []
+      url:
+        raw: http://127.0.0.1:5000/api/all_posts/:username
+        protocol: http
+        host:
+        - '127'
+        - '0'
+        - '0'
+        - '1'
+        port: '5000'
+        path:
+        - api
+        - all_posts
+        - ":username"
+        variable:
+        - key: username
+          value:
+    response: []
+- name: uploads posts
+  request:
+    method: POST
+    header:
+    - key: authentication_token
+      value: WyIwZjg2NTEyNzkzOWI0Y2IwODQwODNiMzUwNTY1ODU0YyJd.ZBznlQ.dVGScx5QxYdW9IbAEwDDegfXlmA
+      type: text
+    body:
+      mode: formdata
+      formdata:
+      - key: file
+        type: file
+        src: "/C:/Users/patil/Documents/1_posts.csv"
+    url:
+      raw: "{{baseUrl}}/api/upload"
+      host:
+      - "{{baseUrl}}"
+      path:
+      - api
+      - upload
+      query:
+      - key: ''
+        value:
+        disabled: true
+  response: []
+variable:
+- key: baseUrl
+  value: http://127.0.0.1:5000
+  type: string
